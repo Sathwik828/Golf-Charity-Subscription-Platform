@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #059669; /* Emerald 600 */
+  --primary-dark: #065f46;
+  --secondary: #4f46e5; /* Indigo 600 */
+  --accent: #f59e0b; /* Amber 500 */
+  --bg-main: #f8fafc;
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  background: var(--bg-main);
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-xl rounded-2xl;
+  }
+  
+  .btn-premium {
+    @apply px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply btn-premium bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:shadow-emerald-200;
+  }
+  
+  .btn-secondary {
+    @apply btn-premium bg-white text-emerald-700 border border-emerald-100 hover:bg-emerald-50;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-indigo-600;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}

@@ -1,0 +1,33 @@
+# 1. Delete old git history
+Remove-Item -Recurse -Force .git
+
+# 2. Create fresh repo
+git init
+
+# 3. Create .gitignore
+@"
+node_modules/
+.env
+.next/
+dist/
+build/
+"@ | Out-File -Encoding utf8 .gitignore
+
+# 4. Remove unwanted tracked files (if any)
+git rm -r --cached node_modules 2>$null
+git rm --cached .env 2>$null
+
+# 5. Add all clean files
+git add .
+
+# 6. Commit
+git commit -m "Clean project upload (fixed git issues)"
+
+# 7. Set branch
+git branch -M main
+
+# 8. Connect GitHub repo
+git remote add origin https://github.com/Sathwik828/Golf-Charity-Subscription-Platform.git
+
+# 9. Push to GitHub
+git push -u origin main --force
